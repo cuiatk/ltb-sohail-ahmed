@@ -45,17 +45,17 @@ public class Customer {
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasMoreElements()) {
 			
-			Rental each = (Rental) rentals.nextElement();
+			Rental rent = (Rental) rentals.nextElement();
 			//determine amounts for each line
-			double thisAmount = each.EXtract();
+			double thisAmount = rent.EXtract();
 			// add frequent renter points
 			frequentRenterPoints ++;
 			// add bonus for a two day new release rental
-			if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE)
+			if ((rent.getMovie().getPriceCode() == Movie.NEW_RELEASE)
 					&&
-					each.getDaysRented() > 1) frequentRenterPoints ++;
+					rent.getDaysRented() > 1) frequentRenterPoints ++;
 			//show figures for this rental
-			result += "\t" + each.getMovie().getTitle()+ "\t" +
+			result += "\t" + rent.getMovie().getTitle()+ "\t" +
 					String.valueOf(thisAmount) + "\n";
 			totalAmount += thisAmount;
 		}
